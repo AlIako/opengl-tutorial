@@ -69,7 +69,8 @@ class Main
                       tests.meshTest.MeshTest,
                       tests.projectionTest.ProjectionTest,
                       tests.transformTest.TransformTest,
-                      tests.directionalLightTest.DirectionalLightTest];
+                      tests.directionalLightTest.DirectionalLightTest,
+                      tests.alexisTriangle.AlexisTriangle];
 
         currentTestNumber = testArray.length - 1;
         switchToTest(currentTestNumber);

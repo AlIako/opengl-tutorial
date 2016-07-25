@@ -36,13 +36,17 @@ class AssetLoader
     static public function getStringFromFile(filename: String): String
     {
         var data: Data = getDataFromFile(filename);
-        return data.readString();
+        if(data != null)
+            return data.readString();
+        return null;
     }
 
     static public function getDataFromFile(filename: String): Data
     {
         var fileUrl = FileSystem.instance().getUrlToStaticData() + "/" + filename;
-        return getDataFromFileUrl(fileUrl);
+        if(fileUrl != null)
+            return getDataFromFileUrl(fileUrl);
+        return null;
     }
 
     static public function getDataFromFileUrl(fileUrl: String): Data

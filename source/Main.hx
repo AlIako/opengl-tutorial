@@ -70,7 +70,9 @@ class Main
                       tests.projectionTest.ProjectionTest,
                       tests.transformTest.TransformTest,
                       tests.directionalLightTest.DirectionalLightTest,
-                      tests.alexisTriangle.AlexisTriangle];
+                      tests.alexisTriangle.AlexisTriangle,
+                      tests.alexisText.AlexisText,
+                      tests.alexisObj.AlexisObj];
 
         currentTestNumber = testArray.length - 1;
         switchToTest(currentTestNumber);

@@ -149,15 +149,6 @@ class AlexisTriangle extends OpenGLTest
             return;
         }
 
-        /// BIND UNIFORM LOCATIONS
-
-        uniformLocation = GL.getUniformLocation(shaderProgram, "u_Tint");
-
-        if(uniformLocation == GL.nullUniformLocation)
-        {
-            trace("Failed to link uniform " + "u_Tint" + " in shader");
-        }
-
         /// CLEANUP
 
         if(vs != GL.nullShader)

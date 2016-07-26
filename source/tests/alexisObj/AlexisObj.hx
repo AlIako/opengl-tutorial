@@ -49,7 +49,6 @@ class AlexisObj extends OpenGLTest
     inline static private var matrix3Size: Int = 9;
 
     private var alexisObjMesh: AlexisObjMesh;
-    private var alexisObjMesh2: AlexisObjMesh;
 
     private var normalMatrix3: Matrix3;
     private var normalMatrix3Data: Data;
@@ -111,7 +110,7 @@ class AlexisObj extends OpenGLTest
         lightPosition.setXYZ(0.0, 0.0, 2.0);
 
         cameraPosition = new Vector3();
-        cameraPosition.setXYZ(0.0, -4.0, 4.0);
+        cameraPosition.setXYZ(0.0, 3.5, 0.0);
 
         zeroPosition = new Vector3();
 
@@ -133,9 +132,9 @@ class AlexisObj extends OpenGLTest
         mvpObj2 = new Matrix4();
 
         palmPos = new Vector3();
-        palmPos.setXYZ(0.0, 0.0, 0.5);
+        palmPos.setXYZ(0.0, 0.5, 1.0);
         palmLook = new Vector3();
-        palmLook.setXYZ(0.0, -4.0, -7.5);
+        palmLook.setXYZ(0.0, -4.0, 4.0);
     }
 
     private function createMesh()
@@ -144,18 +143,13 @@ class AlexisObj extends OpenGLTest
         GL.disable(GLDefines.CULL_FACE);
 
         alexisObjMesh = new AlexisObjMesh();
-        if(alexisObjMesh.loadMesh("mesh/palm.obj", 1))
+        if(alexisObjMesh.loadMesh("mesh/Dwarf3.obj", .04))
             alexisObjMesh.createBuffers();
-
-        alexisObjMesh2 = new AlexisObjMesh();
-        if(alexisObjMesh2.loadMesh("mesh/slime.obj", .5))
-            alexisObjMesh2.createBuffers();
     }
 
     private function destroyMesh()
     {
         alexisObjMesh.destroyBuffers();
-        alexisObjMesh2.destroyBuffers();
     }
 
     private function update(deltaTime: Float, currentTime: Float)
@@ -188,19 +182,8 @@ class AlexisObj extends OpenGLTest
         //passing properties to alexis Mesh
         alexisObjMesh.setMVP(mvpObj); //MVP Matrix is important to the positioning in the shader
 
-        // setup MVP for alexis Mesh2
-        modelMatrix.setTranslation(1.0, .5, -0.5);
-
-        mvpObj2.set(modelMatrix);
-        mvpObj2.multiply(viewMatrix);
-        mvpObj2.multiply(projection);
-
-        //passing properties to alexis Mesh
-        alexisObjMesh2.setMVP(mvpObj2); //MVP Matrix is important to the positioning in the shader
-
         normalMatrix3.writeMatrix3IntoData(normalMatrix3Data);
         alexisObjMesh.setLightVectors(normalMatrix3Data, ambientColor, lightColor, lightDirection, lightPosition);
-        alexisObjMesh2.setLightVectors(normalMatrix3Data, ambientColor, lightColor, lightDirection, lightPosition);
     }
 
     override private function render()
@@ -210,7 +193,6 @@ class AlexisObj extends OpenGLTest
         GL.clear(GLDefines.COLOR_BUFFER_BIT | GLDefines.DEPTH_BUFFER_BIT);
 
         alexisObjMesh.draw();
-        alexisObjMesh2.draw();
 
         GL.bindTexture(GLDefines.TEXTURE_2D, GL.nullTexture);
 

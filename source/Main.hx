@@ -62,17 +62,9 @@ class Main
 
         configureInput();
 
-        testArray = [ tests.OpenGLTest,
-                      tests.clearColorTest.ClearColorTest,
-                      tests.triangleTest.TriangleTest,
-                      tests.textureTest.TextureTest,
-                      tests.meshTest.MeshTest,
-                      tests.projectionTest.ProjectionTest,
-                      tests.transformTest.TransformTest,
-                      tests.directionalLightTest.DirectionalLightTest,
-                      tests.alexisTriangle.AlexisTriangle,
-                      tests.alexisText.AlexisText,
-                      tests.alexisObj.AlexisObj];
+        testArray = [ tests.alexisText.AlexisText,
+                      tests.alexisObj.AlexisObj,
+                      tests.alexisTriangle.AlexisTriangle ];
 
         currentTestNumber = testArray.length - 1;
         switchToTest(currentTestNumber);

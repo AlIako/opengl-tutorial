@@ -72,7 +72,6 @@ class AlexisText extends OpenGLTest
     private var mvpText: Matrix4;
 
     private var alexisBackground: AlexisBackground;
-    private var alexisObjMesh: AlexisObjMesh;
     private var alexisTextRenderer: AlexisTextRenderer;
     private var alexisTextRenderer2: AlexisTextRenderer;
     private var textManager: TextManager;
@@ -146,11 +145,6 @@ class AlexisText extends OpenGLTest
         //stars background
         alexisBackground = new AlexisBackground();
 
-        //some mesh for the background
-        alexisObjMesh = new AlexisObjMesh();
-        if(alexisObjMesh.loadMesh("mesh/tower_ice.obj", 0.014))
-            alexisObjMesh.createBuffers();
-
         //text manager
         var center: Bool = true;
         textManager = new TextManager();
@@ -189,7 +183,6 @@ class AlexisText extends OpenGLTest
     private function destroyMesh()
     {
         alexisBackground.destroyBuffers();
-        alexisObjMesh.destroyBuffers();
         alexisTextRenderer.destroyBuffers();
         alexisTextRenderer2.destroyBuffers();
     }
@@ -220,12 +213,6 @@ class AlexisText extends OpenGLTest
         mvpObj.multiply(viewMatrix);
         mvpObj.multiply(projection);
 
-        //passing properties to alexis Mesh
-        alexisObjMesh.setMVP(mvpObj); //MVP Matrix is important to the positioning in the shader
-
-        normalMatrix3.writeMatrix3IntoData(normalMatrix3Data);
-        alexisObjMesh.setLightVectors(normalMatrix3Data, ambientColor, lightColor, lightDirection, lightPosition);
-
         //text matrix
         alexisTextRenderer.y += deltaTime * 0.3;
         modelMatrix.setTranslation(alexisTextRenderer.x, alexisTextRenderer.y, alexisTextRenderer.z);
@@ -245,7 +232,6 @@ class AlexisText extends OpenGLTest
         GL.clear(GLDefines.COLOR_BUFFER_BIT | GLDefines.DEPTH_BUFFER_BIT);
 
         alexisBackground.draw();
-        //alexisObjMesh.draw();
 
         GL.bindTexture(GLDefines.TEXTURE_2D, GL.nullTexture);
 

@@ -150,9 +150,13 @@ class AlexisText extends OpenGLTest
         textManager = new TextManager();
         textManager.setTextureID(1);
         textManager.setUniformscale(5);
-        textManager.addText(new TextObject("this is a bitmapfont text!", 0, 0, center));
-        textManager.addText(new TextObject("taa..taaa.. tatatata !! taaaa", 0, -150, center));
-        textManager.addText(new TextObject("Hello world!", 0, -300, center));
+        textManager.addText(new TextObject("Hello world!", 0, 0, center));
+        textManager.addText(new TextObject("This is a bitmapfont text!", 0, -150, center));
+        textManager.addText(new TextObject("Lorem ipsum dolor sit amet,", 0, -600, center));
+        textManager.addText(new TextObject("consectetuer adipiscing elit.", 0, -750, center));
+        textManager.addText(new TextObject("Cum sociis natoque penatibus et", 0, -900, center));
+        textManager.addText(new TextObject("magnis dis parturient montes,", 0, -1050, center));
+        textManager.addText(new TextObject("nascetur ridiculus mus.", 0, -1200, center));
         textManager.PrepareDraw();
 
         //text renderer

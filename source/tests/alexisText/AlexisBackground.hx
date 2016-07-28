@@ -250,7 +250,7 @@ class AlexisBackground implements IMesh
 
         GL.bindTexture(GLDefines.TEXTURE_2D, GL.nullTexture);
 
-        GL.enable(GLDefines.DEPTH_TEST);
+        //GL.enable(GLDefines.DEPTH_TEST);
     }
 
     // Destroy your created OpenGL objectes

@@ -96,7 +96,7 @@ class AlexisText extends OpenGLTest
     private function configureOpenGLState(): Void
     {
         GL.clearColor(0.0, 0.0, 0.0, 1.0);
-        GL.enable(GLDefines.DEPTH_TEST);
+        GL.disable(GLDefines.DEPTH_TEST);
         GL.depthMask(true);
 
         normalMatrix3Data = new Data(matrix3Size * floatSize);
@@ -131,7 +131,7 @@ class AlexisText extends OpenGLTest
         var aspect: Float = DuellKit.instance().screenWidth / DuellKit.instance().screenHeight;
 
         projection = new Matrix4();
-        projection.setPerspectiveFov(Math.PI * 0.3, aspect, 0.1, 2000.0);
+        projection.setPerspectiveFov(Math.PI * 0.3, aspect, 0.1, 100.0);
 
         mvpObj = new Matrix4();
         mvpText = new Matrix4();
@@ -154,9 +154,9 @@ class AlexisText extends OpenGLTest
         textManager.addText(new TextObject("This is a bitmapfont text!", 0, -150, center));
         textManager.addText(new TextObject("Lorem ipsum dolor sit amet,", 0, -600, center));
         textManager.addText(new TextObject("consectetuer adipiscing elit.", 0, -750, center));
-        textManager.addText(new TextObject("Cum sociis natoque penatibus et", 0, -900, center));
-        textManager.addText(new TextObject("magnis dis parturient montes,", 0, -1050, center));
-        textManager.addText(new TextObject("nascetur ridiculus mus.", 0, -1200, center));
+        textManager.addText(new TextObject("Cum sociis natoque penatibus", 0, -900, center));
+        /*textManager.addText(new TextObject("et magnis dis parturient montes,", 0, -1050, center));
+        textManager.addText(new TextObject("nascetur ridiculus mus.", 0, -1200, center));*/
         textManager.PrepareDraw();
 
         //text renderer
@@ -236,8 +236,6 @@ class AlexisText extends OpenGLTest
         GL.clear(GLDefines.COLOR_BUFFER_BIT | GLDefines.DEPTH_BUFFER_BIT);
 
         alexisBackground.draw();
-
-        GL.bindTexture(GLDefines.TEXTURE_2D, GL.nullTexture);
 
         //text
         alexisTextRenderer.draw();

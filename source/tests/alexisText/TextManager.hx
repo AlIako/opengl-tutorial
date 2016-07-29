@@ -122,10 +122,10 @@ class TextManager {
     {
         var vertexBufferValues: Array<Float> = new Array<Float>();
         var iter: Int = 0;
-        while (iter + 2 < vecs.length )
+        while (3 * iter + 1 < vecs.length  && 2 * iter + 1 < uvs.length)
         {
             //position
-            vertexBufferValues = vertexBufferValues.concat([vecs[3*iter]/scale, vecs[3*iter+1]/scale, vecs[3*iter+2] * 0, 1.0]);
+            vertexBufferValues = vertexBufferValues.concat([vecs[3*iter]/scale, vecs[3*iter+1]/scale, 0, 1.0]);
 
             //texture
             vertexBufferValues = vertexBufferValues.concat([uvs[2*iter], uvs[2*iter+1]]);
@@ -295,7 +295,7 @@ class TextManager {
             {
                 // get ascii value
                 var c: Null<Int> = text.charCodeAt(j);
-                
+
                 var c_val: Int = 0;
                 if(c != null)
                     c_val = c;

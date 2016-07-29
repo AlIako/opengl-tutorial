@@ -224,7 +224,6 @@ class AlexisTextRenderer implements IMesh
         GL.bindBuffer(GLDefines.ELEMENT_ARRAY_BUFFER, indexBuffer);
         GL.bufferData(GLDefines.ELEMENT_ARRAY_BUFFER, indexBufferData, GLDefines.STATIC_DRAW);
         GL.bindBuffer(GLDefines.ELEMENT_ARRAY_BUFFER, GL.nullBuffer);
-
     }
 
     public function destroyBuffers(): Void
